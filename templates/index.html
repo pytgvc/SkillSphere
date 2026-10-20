@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 🍀SkillSphere | Home</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="{{ url_for('homepage') }}" class="logo">SkillSphere<span>.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="{{ url_for('homepage') }}" class="active">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('skills_page') }}">Skills</a></li>
+                <li><a href="{{ url_for('projects_page') }}">Projects</a></li>
+                <li><a href="{{ url_for('achievements_page') }}">Achievements</a></li>
+                <li><a href="{{ url_for('progress_page') }}">Progress</a></li>
+                <li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow">WELCOME TO MY SKILLSPHERE</p>
+
+                <h1>
+                    Hi, I'm
+                    <span>{{ profile.NAME }}</span>
+                </h1>
+
+                <h2>{{ profile.TITLE }}</h2>
+
+                <p class="hero-description">
+                    {{ profile.BIO }}
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="{{ url_for('projects_page') }}" class="btn">
+                        Explore My Projects
+                    </a>
+
+                    <a href="{{ url_for('about') }}" class="btn btn-outline">
+                       🧑‍💻 More About Me
+                    </a>
+                </div>
+
+                <div class="hero-note">
+                    <span class="leaf">✦</span>
+                    Learning, building and growing every day.
+                </div>
+            </div>
+
+             <div class="hero-visual">
+                  <div class="profile-frame">
+                       <img src="{{ url_for('static', filename='images/khusi.png') }}" alt="Khusi Profile Picture">
+            </div>
+            <div class="floating-note">
+                <span>✧</span> Curious mind, creative ideas
+           </div>
+      </div>
+                <div class="decor decor-one"></div>
+                <div class="decor decor-two"></div>
+
+                <div class="hero-card">
+                    <span class="card-icon">🌿</span>
+                    <p class="card-label">MY JOURNEY</p>
+                    <h3>Learn.</h3>
+                    <h3>Build.</h3>
+                    <h3>Grow.</h3>
+                    <p class="card-caption">One step at a time.</p>
+                </div>
+
+                <div class="floating-note">
+                    <span>✧</span> Curious mind, creative ideas
+                </div>
+            </div>
+        </section>
+
+        <section class="intro-section">
+            <p class="eyebrow">A LITTLE ABOUT MY WORLD</p>
+
+            <h2>Turning Curiosity Into Skills</h2>
+
+            <p>
+                SkillSphere is my personal portfolio where I share my
+                technical skills, projects, achievements and learning
+                progress as I explore the world of technology and AI.
+            </p>
+
+            <a href="{{ url_for('about') }}" class="text-link">
+                Discover My Journey →
+            </a>
+        </section>
+
+        <section class="highlights-section">
+            <div class="section-heading">
+                <p class="eyebrow">EXPLORE SKILLSPHERE</p>
+                <h2>What I'm Building</h2>
+            </div>
+
+            <div class="highlight-grid">
+                <a href="{{ url_for('skills_page') }}" class="highlight-card">
+                    <span class="highlight-icon">✳</span>
+                    <h3>My Skills</h3>
+                    <p>Technologies I'm learning and exploring.</p>
+                    <span class="card-link">Explore Skills →</span>
+                </a>
+
+                <a href="{{ url_for('projects_page') }}" class="highlight-card">
+                    <span class="highlight-icon">◇</span>
+                    <h3>My Projects</h3>
+                    <p>Ideas and projects I've worked on.</p>
+                    <span class="card-link">View Projects →</span>
+                </a>
+
+                <a href="{{ url_for('achievements_page') }}" class="highlight-card">
+                    <span class="highlight-icon">✧</span>
+                    <h3>Achievements</h3>
+                    <p>Hackathons, events and learning milestones.</p>
+                    <span class="card-link">See Achievements →</span>
+                </a>
+
+                <a href="{{ url_for('progress_page') }}" class="highlight-card">
+                    <span class="highlight-icon">↗</span>
+                    <h3>My Progress</h3>
+                    <p>A look at my ongoing learning journey.</p>
+                    <span class="card-link">View Progress →</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="closing-section">
+            <p class="eyebrow">LET'S CONNECT</p>
+            <h2>Every great journey starts somewhere.</h2>
+            <p>Thanks for visiting my little corner of the internet.</p>
+
+            <a href="{{ url_for('contact_page') }}" class="btn">
+                Get In Touch
+            </a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>
+            &copy; 2026 SkillSphere · Made with curiosity and care.
+        </p>
+    </footer>
+
+</body>
+</html>

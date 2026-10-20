@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillSphere | Achievements</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+
+            <a href="{{ url_for('homepage') }}" class="logo">
+                🌿 SkillSphere<span>.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="{{ url_for('homepage') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('skills_page') }}">Skills</a></li>
+                <li><a href="{{ url_for('projects_page') }}">Projects</a></li>
+                <li><a href="{{ url_for('achievements_page') }}" class="active">Achievements</a></li>
+                <li><a href="{{ url_for('progress_page') }}">Progress</a></li>
+                <li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+            </ul>
+
+            <a href="{{ url_for('contact_page') }}" class="nav-cta">
+                Get in Touch
+            </a>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="achievements-hero">
+
+            <div class="achievements-hero-content">
+
+                <p class="eyebrow">
+                    ✧ MILESTONES & MEMORIES
+                </p>
+
+                <h1>
+                    Every Step<br>
+                    <span class="script-text">Counts.</span>
+                    <span class="hero-star">♡</span>
+                </h1>
+
+                <p class="hero-description">
+                    Every opportunity to participate, learn and create
+                    brings me one step closer to my goals.
+                </p>
+
+                <div class="hero-note">
+                    <span>✦</span>
+                    Celebrating progress, not just perfection.
+                </div>
+
+            </div>
+
+            <div class="achievements-hero-visual">
+
+                <span class="achievement-decoration decoration-one">✧</span>
+                <span class="achievement-decoration decoration-two">✿</span>
+
+                <div class="achievement-trophy-card">
+
+                    <div class="trophy-circle"></div>
+
+                    <p class="eyebrow">MY JOURNEY SO FAR</p>
+
+                    <h2>Learn.</h2>
+                    <h2>Participate.</h2>
+                    <h2>Achieve.</h2>
+
+                    <p class="trophy-caption">
+                        Every experience matters.
+                    </p>
+
+                </div>
+
+                <span class="achievement-floating-note">
+                    Small steps,<br>big dreams ♡
+                </span>
+
+            </div>
+
+        </section>
+        <section class="achievements-intro">
+
+            <div>
+                <p class="eyebrow">A COLLECTION OF EXPERIENCES</p>
+
+                <h2>My Achievements & Highlights</h2>
+
+                <p>
+                    Hackathons, learning opportunities and experiences
+                    that are helping me grow in technology and AI.
+                </p>
+            </div>
+
+            <div class="achievement-total">
+                <span class="achievement-total-number">
+                    {{ achievements|length }}
+                </span>
+
+                <span class="achievement-total-label">
+                    Milestones<br>& Experiences
+                </span>
+            </div>
+
+        </section>
+
+        <section class="achievements-section">
+
+            <div class="achievements-grid">
+
+                {% for achievement in achievements %}
+
+                <article class="achievement-card">
+
+                    <div class="achievement-card-top">
+
+                        <span class="achievement-card-number">
+                            {{ "%02d"|format(loop.index) }}
+                        </span>
+
+                        <span class="achievement-card-icon">
+                            {% if "nominated" in achievement|lower %}
+                                  🧑‍💻
+                            {% elif "hackathon" in achievement|lower %}
+                                  🤖 
+                            {% elif "bootcamp" in achievement|lower %}
+                                   *
+                            {% else %}
+                                ✧
+                            {% endif %}
+                        </span>
+
+                    </div>
+
+                    <div class="achievement-card-decoration">✿</div>
+
+                    <p class="achievement-category">
+                        {% if "nominated" in achievement|lower %}
+                            NOMINATION
+                        {% elif "hackathon" in achievement|lower %}
+                            HACKATHON
+                        {% elif "bootcamp" in achievement|lower %}
+                            LEARNING EXPERIENCE
+                        {% else %}
+                            PARTICIPATION
+                        {% endif %}
+                    </p>
+
+                    <h3>{{ achievement }}</h3>
+
+                    <div class="achievement-card-footer">
+                        <span class="achievement-status-icon">✦</span>
+                        <span>Part of my journey</span>
+                    </div>
+
+                </article>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+        <section class="achievement-highlight">
+
+            <div class="highlight-icon">🌟</div>
+
+            <div class="highlight-content">
+
+                <p class="eyebrow">A SPECIAL MILESTONE</p>
+
+                <h2>
+                    Learning beyond<br>
+                    the classroom.
+                </h2>
+
+                <p>
+                    From participating in AI hackathons to exploring
+                    innovation challenges, each experience helps me
+                    discover new ideas, strengthen my skills and
+                    understand how technology can solve real problems.
+                </p>
+
+                <a href="{{ url_for('projects_page') }}" class="btn">
+                    Explore My Projects →
+                </a>
+
+            </div>
+
+            <div class="highlight-decoration">✧</div>
+
+        </section>
+
+        <section class="achievements-closing">
+
+            <span class="closing-icon">🌿</span>
+
+            <p class="eyebrow">MORE TO COME</p>
+
+            <h2>
+                This is only the beginning.
+            </h2>
+
+            <p>
+                Every new challenge is another opportunity to learn,
+                create and grow.
+            </p>
+
+            <a href="{{ url_for('progress_page') }}" class="text-link">
+                Explore My Learning Progress →
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>
+            &copy; 2026 SkillSphere
+            <span>·</span>
+            Growing through every experience.
+        </p>
+    </footer>
+</body>
+</html>

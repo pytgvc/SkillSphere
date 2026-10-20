@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSphere | My Skills</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="{{ url_for('homepage') }}" class="logo">
+                🌿 SkillSphere<span>.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="{{ url_for('homepage') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('skills_page') }}" class="active">Skills</a></li>
+                <li><a href="{{ url_for('projects_page') }}">Projects</a></li>
+                <li><a href="{{ url_for('achievements_page') }}">Achievements</a></li>
+                <li><a href="{{ url_for('progress_page') }}">Progress</a></li>
+                <li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="skills-hero">
+
+            <div class="skills-hero-content">
+                <p class="eyebrow">
+                    MY TOOLKIT <span class="eyebrow-line"></span>
+                </p>
+
+                <h1>
+                    Skills I'm<br>
+                    <span class="script-text">Growing</span>
+                    <span class="hero-star">✧</span>
+                </h1>
+
+                <p class="hero-description">
+                    Every new concept is a chance to learn something
+                    meaningful. Here's what I'm exploring and building with.
+                </p>
+
+                <div class="hero-note">
+                    <span>✦</span>
+                    Learning today, building tomorrow.
+                </div>
+            </div>
+
+            <div class="skills-hero-visual">
+
+                <div class="skills-orbit orbit-one"></div>
+                <div class="skills-orbit orbit-two"></div>
+
+                <div class="skills-center-card">
+                    <span class="skills-center-icon">🌱</span>
+                    <h2>Learn.</h2>
+                    <h2>Practice.</h2>
+                    <h2>Build.</h2>
+                    <p>My developer journey</p>
+                </div>
+
+                <span class="skills-floating-icon floating-python">🐍</span>
+                <span class="skills-floating-icon floating-data">📊</span>
+                <span class="skills-floating-icon floating-web">💻</span>
+                <span class="skills-floating-icon floating-ai">✧</span>
+
+            </div>
+
+        </section>
+
+        <section class="skills-intro">
+
+            <div class="skills-intro-text">
+                <p class="eyebrow">MY LEARNING SPACE</p>
+                <h2>
+                    Building my foundation,<br>
+                    one skill at a time.
+                </h2>
+            </div>
+
+            <p>
+                I'm exploring programming, and Artificial Intelligence through practice and hands-on
+                projects. My goal is to keep learning, experiment with
+                new ideas and turn concepts into useful projects.
+            </p>
+
+        </section>
+
+        <section class="skills-section">
+
+            <div class="section-heading">
+                <p class="eyebrow">WHAT I'M LEARNING</p>
+                <h2>My Skills Collection</h2>
+                <p>Every skill is another step in my journey.</p>
+            </div>
+
+            <div class="skills-grid">
+
+                {% for skill in skills %}
+
+                <article class="skill-card">
+
+                    <div class="skill-card-top">
+                        <span class="skill-number">
+                            {{ "%02d"|format(loop.index) }}
+                        </span>
+
+                        <span class="skill-sparkle">✧</span>
+                    </div>
+
+                    <div class="skill-icon">
+                        {% if skill == "Python" %}
+                            🐍
+                        {% elif skill == "Pandas" %}
+                            🐼
+                        {% elif skill == "Numpy" %}
+                            🔢
+                        {% elif skill == "Matplotlib" %}
+                            📊
+                        {% elif skill == "HTML basic" %}
+                            🌐
+                        {% elif skill == "CSS basic" %}
+                            🎨
+                        {% elif skill == "FLASK" %}
+                            ⚗️
+                        {% elif skill == "Streamlit" %}
+                            📈
+                        {% elif skill == "vibe coding" %}
+                            ✨
+                        {% else %}
+                            🌱
+                        {% endif %}
+                    </div>
+
+                    <h3>{{ skill }}</h3>
+
+                    <p class="skill-card-description">
+
+                        {% if skill == "Python" %}
+                            Exploring programming and problem-solving.
+
+                        {% elif skill == "Pandas" %}
+                            Learning to organize and analyze data.
+
+                        {% elif skill == "Numpy" %}
+                            Practicing numerical computing and arrays.
+
+                        {% elif skill == "Matplotlib" %}
+                            Exploring data visualization through charts.
+
+                        {% elif skill == "HTML basic" %}
+                            Learning to structure web pages.
+
+                        {% elif skill == "CSS basic" %}
+                            Exploring styling and web design.
+
+                        {% elif skill == "FLASK" %}
+                            Learning to build web applications with Python.
+
+                        {% elif skill == "Streamlit" %}
+                            Creating interactive data applications.
+
+                        {% elif skill == "vibe coding" %}
+                            Experimenting with AI-assisted development.
+
+                        {% else %}
+                            Learning and practicing new concepts.
+                        {% endif %}
+
+                    </p>
+
+                    <div class="skill-card-footer">
+                        <span class="skill-status-dot"></span>
+                        <span>Currently Learning</span>
+                    </div>
+
+                </article>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+        <section class="skills-philosophy">
+
+            <div class="philosophy-decoration philosophy-left">✿</div>
+
+            <div class="philosophy-content">
+                <p class="eyebrow">MY APPROACH</p>
+
+                <h2>
+                    Not just collecting skills,<br>
+                    but learning to
+                    <span class="script-text">use them.</span>
+                </h2>
+
+                <p>
+                    I believe real learning happens when I practice,
+                    solve problems, experiment and build projects.
+                    I'm still growing, and every small step counts.
+                </p>
+
+                <a href="{{ url_for('projects_page') }}" class="btn">
+                    Explore My Projects →
+                </a>
+            </div>
+
+            <div class="philosophy-decoration philosophy-right">✧</div>
+
+        </section>
+
+        <section class="skills-closing">
+
+            <span class="closing-icon">🌿</span>
+
+            <h2>There's always something new to learn.</h2>
+
+            <p>
+                One concept, one practice session, one project at a time.
+            </p>
+
+            <a href="{{ url_for('progress_page') }}" class="text-link">
+                See My Learning Progress →
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>
+            &copy; 2026 SkillSphere
+            <span>·</span>
+            Growing through learning and creativity.
+        </p>
+    </footer>
+
+</body>
+</html>

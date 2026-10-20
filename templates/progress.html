@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillSphere | Learning Progress</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+
+            <a href="{{ url_for('homepage') }}" class="logo">
+                🌿 SkillSphere<span>.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="{{ url_for('homepage') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('skills_page') }}">Skills</a></li>
+                <li><a href="{{ url_for('projects_page') }}">Projects</a></li>
+                <li><a href="{{ url_for('achievements_page') }}">Achievements</a></li>
+                <li><a href="{{ url_for('progress_page') }}" class="active">Progress</a></li>
+                <li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+            </ul>
+
+            <a href="{{ url_for('contact_page') }}" class="nav-cta">
+                Get in Touch
+            </a>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="progress-hero">
+
+            <div class="progress-hero-content">
+
+                <p class="eyebrow">✧ MY LEARNING JOURNEY</p>
+
+                <h1>
+                    Growing One<br>
+                    <span class="script-text">Step at a Time.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Learning is a journey, not a race. Here's a snapshot
+                    of the skills I'm currently exploring and developing.
+                </p>
+
+                <div class="hero-note">
+                    <span>🌱</span>
+                    Small progress is still progress.
+                </div>
+
+            </div>
+
+            <div class="progress-hero-visual">
+
+                <div class="progress-art-circle">
+                    <span class="progress-art-leaf">🌿</span>
+                    <p class="eyebrow">KEEP GROWING</p>
+                    <h2>Learn.</h2>
+                    <h2>Practice.</h2>
+                    <h2>Improve.</h2>
+                    <p>Every day counts ♡</p>
+                </div>
+
+                <span class="progress-art-sparkle">✧</span>
+                <span class="progress-art-flower">✿</span>
+
+            </div>
+
+        </section>
+        <section class="progress-summary-section">
+
+            <div class="section-heading">
+                <p class="eyebrow">MY PROGRESS AT A GLANCE</p>
+                <h2>A Little Progress Report</h2>
+                <p>Insights from my current learning goals.</p>
+            </div>
+
+            <div class="progress-summary-grid">
+
+                <article class="progress-summary-card">
+                    <span class="summary-icon">🌱</span>
+                    <p>Total Learning Goals</p>
+                    <h3>{{ summary.total_goals }}</h3>
+                    <span class="summary-caption">Goals I'm working on</span>
+                </article>
+
+                <article class="progress-summary-card">
+                    <span class="summary-icon">📈</span>
+                    <p>Average Progress</p>
+                    <h3>{{ summary.average }}%</h3>
+                    <span class="summary-caption">Across all learning goals</span>
+                </article>
+
+                <article class="progress-summary-card">
+                    <span class="summary-icon">✦</span>
+                    <p>Highest Progress</p>
+                    <h3>{{ summary.highest }}%</h3>
+                    <span class="summary-caption">Current highest goal</span>
+                </article>
+
+                <article class="progress-summary-card">
+                    <span class="summary-icon">🌼</span>
+                    <p>Lowest Progress</p>
+                    <h3>{{ summary.lowest }}%</h3>
+                    <span class="summary-caption">Room to keep growing</span>
+                </article>
+
+            </div>
+
+        </section>
+
+        <section class="learning-goals-section">
+
+            <div class="section-heading">
+                <p class="eyebrow">WHAT I'M WORKING ON</p>
+                <h2>My Learning Goals</h2>
+                <p>Every skill has its own journey.</p>
+            </div>
+
+            <div class="learning-goals-grid">
+
+                {% for goal in progress.learning_goals %}
+
+                <article class="learning-goal-card">
+
+                    <div class="goal-card-top">
+                        <span class="goal-icon">
+                            {% if goal.title == "Python" %}
+                                🐍
+                            {% elif goal.title == "Pandas" %}
+                                🐼
+                            {% elif goal.title == "NumPy" %}
+                                🔢
+                            {% elif goal.title == "Matplotlib" %}
+                                📊
+                            {% elif goal.title == "Flask" %}
+                                ⚗️
+                            {% elif goal.title == "HTML & CSS" %}
+                                🎨
+                            {% else %}
+                                🌱
+                            {% endif %}
+                        </span>
+
+                        <span class="goal-status">{{ goal.status }}</span>
+                    </div>
+
+                    <h3>{{ goal.title }}</h3>
+
+                    <div class="goal-progress-label">
+                        <span>Learning progress</span>
+                        <strong>{{ goal.progress }}%</strong>
+                    </div>
+
+                    <div class="goal-progress-track">
+                        <div class="goal-progress-fill"
+                    data-progress="{{goal.progress}}">
+                        </div>
+                    </div>
+
+                    <p class="goal-card-note">
+                        Keep practicing, one step at a time.
+                    </p>
+
+                </article>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+        <section class="progress-chart-section">
+
+            <div class="chart-heading">
+                <div>
+                    <p class="eyebrow">VISUAL INSIGHTS</p>
+                    <h2>My Progress in Charts</h2>
+                    <p>A visual overview of my learning goals.</p>
+                </div>
+
+                <span class="chart-decoration">📊</span>
+            </div>
+
+            <div class="progress-chart-card">
+
+                <div class="chart-card-heading">
+                    <h3>Learning Progress Overview</h3>
+                    <span>Progress (%)</span>
+                </div>
+
+                <img
+                    src="{{ url_for('static', filename='images/progress_chart.png') }}"
+                    alt="Matplotlib chart showing progress across learning goals"
+                    class="progress-chart-image"
+                >
+
+            </div>
+
+        </section>
+
+        <section class="progress-analysis-section">
+
+            <div class="section-heading">
+                <p class="eyebrow">DATA-DRIVEN LEARNING</p>
+                <h2>Learning Analytics</h2>
+                <p>A closer look at the data behind my learning journey.</p>
+            </div>
+
+            <div class="analysis-grid">
+
+                <article class="analysis-card">
+
+                    <span class="analysis-icon">📋</span>
+
+                    <p>Total Goals Analysed</p>
+
+                    <h3>{{ analysis.total_goals }}</h3>
+
+                    <span class="analysis-caption">
+                        Analysed using Pandas
+                    </span>
+
+                </article>
+
+                <article class="analysis-card">
+
+                    <span class="analysis-icon">📊</span>
+
+                    <p>Average Progress</p>
+
+                    <h3>{{ analysis.average_progress }}%</h3>
+
+                    <span class="analysis-caption">
+                        Calculated from learning data
+                    </span>
+
+                </article>
+
+            </div>
+
+            <div class="status-analysis-card">
+
+                <div class="status-analysis-heading">
+                    <span>✧</span>
+                    <h3>Learning Status Breakdown</h3>
+                </div>
+
+                {% if analysis.status_counts %}
+
+                    {% for status, count in analysis.status_counts.items() %}
+
+                    <div class="status-row">
+
+                        <span class="status-name">{{ status }}</span>
+
+                    <div class="status-track">
+                        <div class="status-fill"
+                   data-progress="{{ ((count / analysis.total_goals * 100) if analysis.total_goals else 0) }}">
+         </div>
+    </div>
+                        <strong>{{ count }}</strong>
+
+                    </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <p>No learning status data is available yet.</p>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+        <section class="progress-closing">
+
+            <span class="closing-icon">🌿</span>
+
+            <p class="eyebrow">A REMINDER TO MYSELF</p>
+
+            <h2>Progress, not perfection.</h2>
+
+            <p>
+                Every concept I understand and every project I build
+                takes me closer to becoming the developer I want to be.
+            </p>
+
+            <a href="{{ url_for('projects_page') }}" class="btn">
+                See What I'm Building →
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <p>
+            &copy; 2026 SkillSphere
+            <span>·</span>
+            Growing one step at a time.
+        </p>
+
+    </footer>
+
+</body>
+</html>

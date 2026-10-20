@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSphere | About Me</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="{{ url_for('homepage') }}" class="logo">SkillSphere<span>.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="{{ url_for('homepage') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="active">About</a></li>
+                <li><a href="{{ url_for('skills_page') }}">Skills</a></li>
+                <li><a href="{{ url_for('projects_page') }}">Projects</a></li>
+                <li><a href="{{ url_for('achievements_page') }}">Achievements</a></li>
+                <li><a href="{{ url_for('progress_page') }}">Progress</a></li>
+                <li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <p class="eyebrow">GET TO KNOW ME</p>
+            <h1>My Story, My Journey<span>.</span></h1>
+            <p>
+                Every skill begins with curiosity, and every journey
+                begins with the courage to start.
+            </p>
+        </section>
+
+        <section class="about-content">
+            <div class="about-card">
+                <div class="about-symbol">✿</div>
+                <p class="eyebrow">A LITTLE INTRODUCTION</p>
+                <h2>Hello, I'm {{ profile.NAME }}</h2>
+                <h3>{{ profile.TITLE }}</h3>
+                <p>{{ profile.BIO }}</p>
+            </div>
+
+            <div class="about-card journey-card">
+                <p class="eyebrow">MY JOURNEY</p>
+                <h2>Learning by Building</h2>
+                <p>
+                    I'm exploring Python,Artificial Intelligence through hands-on projects.
+                    I believe in learning new concepts, experimenting with
+                    ideas and improving one step at a time.
+                </p>
+                <p>
+                    SkillSphere is my personal space to document my skills,
+                    projects, achievements and learning progress.
+                </p>
+            </div>
+        </section>
+
+        <section class="interests-section">
+            <div class="section-heading">
+                <p class="eyebrow">WHAT INSPIRES ME</p>
+                <h2>Things I Love Exploring</h2>
+            </div>
+
+            <div class="interest-grid">
+                {% for interest in interests %}
+                <div class="interest-card">
+                    <span class="interest-icon">✧</span>
+                    <h3>{{ interest }}</h3>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="about-quote">
+            <span class="quote-mark">“</span>
+            <h2>Stay curious. Keep creating. Grow continuously.</h2>
+            <p>My journey is still unfolding, one project at a time and at least not last 
+                becoming a successful person. </p>
+            <a href="{{ url_for('projects_page') }}" class="btn">
+                Explore My Projects
+            </a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 SkillSphere · 🍀Made with curiosity and care.</p>
+     
+    </footer>
+
+</body>
+</html>
+
